@@ -14,16 +14,28 @@
 </head>
 <body>
     <?php
-        $name = "Dark matter";
-        $read = false;
-        if ($read){
-            $message = "you have read $name";
-        } else {
-            $message = "you have not $name";
-        }
+        $books = [
+                [
+                        'name' => "Do androids dream of electric sheep",
+                        'author' => "Philip K. Dick",
+                        'purchaseUrl' => 'www.example.com'
+                ],
+                [
+                        'name' => "The langoliers",
+                        'author' => 'andy weir',
+                        'purchaseUrl' => 'www.example.com'
+                ],
+                //["hail mary"]
+        ];
     ?>
-    <h1>
-        <?php echo $message; ?>
-    </h1>
+    <ul>
+        <?php foreach ($books as $book) : ?>
+                <li>
+                    <a href="<?= $book['purchaseUrl']; ?>">
+                        <?= $book['name'] ?>
+                    </a>
+                </li>
+        <?php endforeach; ?>
+    </ul>
 </body>
 </html>
