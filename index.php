@@ -25,11 +25,26 @@
                         'author' => 'andy weir',
                         'purchaseUrl' => 'www.example.com'
                 ],
-                //["hail mary"]
+                [
+                    'name' => "the martins",
+                    'author' => "andy weir",
+                    'purchaseUrl' => 'www.example.com'
+                ]
+
         ];
+        function filter ($items, $key, $value)
+        {
+            $filteredItem = [];
+            foreach ($items as $item){
+                if ($item[$key] === $value)
+                    $filteredItem[] = $item;
+            }
+          return $filteredItem;
+        }
+        $filteredBooks = filter($books,'author', 'andy weir');
     ?>
     <ul>
-        <?php foreach ($books as $book) : ?>
+        <?php foreach ( $filteredBooks as $book) : ?>
                 <li>
                     <a href="<?= $book['purchaseUrl']; ?>">
                         <?= $book['name'] ?>
@@ -37,5 +52,8 @@
                 </li>
         <?php endforeach; ?>
     </ul>
+    <p>
+
+    </p>
 </body>
 </html>
